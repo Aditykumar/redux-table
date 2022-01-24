@@ -32,10 +32,10 @@ const Addstudent = () => {
     
   
     useEffect(() => {
-        const loaduserdata = async () => {
+        const loaduserdata = () => {
 
-            const amy = await student.filter((vii) => vii.Id === id)
-            amy.map((val) => setdataa(val))
+            const UpData = student.filter((vii) => vii.Id === id)
+        UpData.map((val) => setdataa(val))
     
         }
         loaduserdata();
@@ -50,19 +50,25 @@ const Addstudent = () => {
 
 
     }
-
+   
     const btnsub = (e) => {
-        e.preventDefault();
+        if(dataa.Name===" " || dataa.Age==='' || dataa.Course==='' || dataa.Batch==='')
+        {
+            alert('please fill details')
+            return
+        }
 
-        if (!id === "") {
-            const newdata = { ...dataa, Id: id }
+        if (!id ===false) {
+          
+            const newdata = { ...dataa, Id:id }
             dispatch(updatestudent(newdata))
 
         }
         else {
-            const newdata = { ...dataa, Id: `${student.length + 1}` }
+         
+            const data = { ...dataa, Id: `${student.length + 1}` }
 
-            dispatch(addstudent(newdata))
+            dispatch(addstudent(data))
         }
 
         navigte('/student')
