@@ -36,7 +36,7 @@ const addstudentred = (state= intit, action)=>{
             return [...state,action.payload];
 
             case "UPDATE_STUDENT" :
-                const updatest = state.map((val)=> val.Id==action.payload.Id ? action.payload : val)
+                const updatest = state.map((val)=> val.Id===action.payload.Id ? action.payload : val)
                 const newst = updatest;
                 return newst ;
 
